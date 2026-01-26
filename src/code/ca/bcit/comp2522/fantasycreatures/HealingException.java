@@ -16,7 +16,7 @@ public class HealingException extends RuntimeException
      *
      * @param message the given message explaining the cause of the exception
      */
-    HealingException(final String message)
+    public HealingException(final String message)
     {
         super(message);
     }

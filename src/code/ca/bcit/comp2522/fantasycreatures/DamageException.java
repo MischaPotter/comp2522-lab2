@@ -16,7 +16,7 @@ public class DamageException extends RuntimeException
      *
      * @param message the given message explaining the cause of the exception
      */
-    DamageException(final String message)
+    public DamageException(final String message)
     {
         super(message);
     }
