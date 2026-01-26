@@ -214,9 +214,9 @@ public class Date
     }
 
     /**
-     * Gets this Date's month as an int.
+     * Gets the date's month as an int.
      *
-     * @return this Date's month as an int
+     * @return the date's month as an int
      */
     public int getMonthInt()
     {

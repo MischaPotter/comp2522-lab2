@@ -138,7 +138,7 @@ public class Creature
     public int getAgeYears()
     {
         final int tempYear = dateOfBirth.getYear();
-        final int tempMonth = dateOfBirth.month;
+        final int tempMonth = dateOfBirth.getMonthInt();
         final int tempDay;
 
         if (dateOfBirth.month == Date.getFebruaryMonthNum() &&
