@@ -47,10 +47,12 @@ public class Date
      * @param year This is the first parameter for a year
      * @param month This is the second parameter for a month
      * @param day This is the third parameter for a day
+     * @throws IllegalArgumentException if any parameter is invalid
      */
     public Date(final int year, 
                 final int month, 
                 final int day)
+                throws IllegalArgumentException
     {
         validateYear(year);
         validateMonth(month, year);
@@ -66,6 +68,7 @@ public class Date
      * @param year The year to validate
      */
     private static void validateYear(final int year)
+            throws IllegalArgumentException
     {
         if (year > CURRENT_YEAR)
         {
@@ -84,6 +87,7 @@ public class Date
      */
     private static void validateMonth(final int month,
                                       final int year)
+                                      throws IllegalArgumentException
     {
         if (month < JANUARY_MONTH_NUM ||
             month > DECEMBER_MONTH_NUM)
@@ -108,6 +112,7 @@ public class Date
     private static void validateDay(final int day,
                                     final int month,
                                     final int year)
+                                    throws IllegalArgumentException
     {
         if (day < DAY_ONE)
         {
