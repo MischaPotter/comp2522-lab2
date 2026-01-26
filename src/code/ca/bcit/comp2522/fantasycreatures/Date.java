@@ -10,32 +10,32 @@ package ca.bcit.comp2522.fantasycreatures;
  */
 public class Date
 {
-    private static final int CURRENT_YEAR = 2026;
+    private static final int CURRENT_YEAR  = 2026;
     private static final int CURRENT_MONTH = 1;
-    private static final int CURRENT_DAY = 25;
+    private static final int CURRENT_DAY   = 25;
 
-    private static final int JANUARY_MONTH_NUM = 1;
-    private static final int FEBRUARY_MONTH_NUM = 2;
-    private static final int MARCH_MONTH_NUM = 3;
-    private static final int APRIL_MONTH_NUM = 4;
-    private static final int MAY_MONTH_NUM = 5;
-    private static final int JUNE_MONTH_NUM = 6;
-    private static final int JULY_MONTH_NUM = 7;
-    private static final int AUGUST_MONTH_NUM = 8;
+    private static final int JANUARY_MONTH_NUM   = 1;
+    private static final int FEBRUARY_MONTH_NUM  = 2;
+    private static final int MARCH_MONTH_NUM     = 3;
+    private static final int APRIL_MONTH_NUM     = 4;
+    private static final int MAY_MONTH_NUM       = 5;
+    private static final int JUNE_MONTH_NUM      = 6;
+    private static final int JULY_MONTH_NUM      = 7;
+    private static final int AUGUST_MONTH_NUM    = 8;
     private static final int SEPTEMBER_MONTH_NUM = 9;
-    private static final int OCTOBER_MONTH_NUM = 10;
-    private static final int NOVEMBER_MONTH_NUM = 11;
-    private static final int DECEMBER_MONTH_NUM = 12;
+    private static final int OCTOBER_MONTH_NUM   = 10;
+    private static final int NOVEMBER_MONTH_NUM  = 11;
+    private static final int DECEMBER_MONTH_NUM  = 12;
 
-    private static final int DAY_ONE = 1;
+    private static final int DAY_ONE                    = 1;
     private static final int SHORT_FEBRUARY_MONTH_TOTAL = 28;
-    private static final int LONG_FEBRUARY_MONTH_TOTAL = 29;
-    private static final int SHORT_MONTH = 30;
-    private static final int LONG_MONTH = 31;
-    private static final int YEAR_EVERY_LEAP_YEAR = 4;
-    private static final int YEAR_EVERY_CENTURY = 100;
-    private static final int YEAR_EVERY_FOUR_CENTURY = 400;
-    private static final int DIVISIBLE = 0;
+    private static final int LONG_FEBRUARY_MONTH_TOTAL  = 29;
+    private static final int SHORT_MONTH                = 30;
+    private static final int LONG_MONTH                 = 31;
+    private static final int YEAR_EVERY_LEAP_YEAR       = 4;
+    private static final int YEAR_EVERY_CENTURY         = 100;
+    private static final int YEAR_EVERY_FOUR_CENTURY    = 400;
+    private static final int DIVISIBLE                  = 0;
 
     public final int year;
     public final int month;
@@ -44,31 +44,32 @@ public class Date
     /**
      * Constructs the birth date of a fantasy creature.
      *
-     * @param year This is the first parameter for a year
+     * @param year  This is the first parameter for a year
      * @param month This is the second parameter for a month
-     * @param day This is the third parameter for a day
+     * @param day   This is the third parameter for a day
      * @throws IllegalArgumentException if any parameter is invalid
      */
-    public Date(final int year, 
-                final int month, 
+    public Date(final int year,
+                final int month,
                 final int day)
-                throws IllegalArgumentException
+        throws IllegalArgumentException
     {
         validateYear(year);
         validateMonth(month, year);
         validateDay(day, month, year);
 
-        this.year = year;
+        this.year  = year;
         this.month = month;
-        this.day = day;
+        this.day   = day;
     }
+
     /**
-     * Checks if the year is greater than CURRENT_YEAR 
+     * Checks if the year is greater than CURRENT_YEAR
      *
      * @param year The year to validate
      */
     private static void validateYear(final int year)
-            throws IllegalArgumentException
+        throws IllegalArgumentException
     {
         if (year > CURRENT_YEAR)
         {
@@ -83,11 +84,11 @@ public class Date
      * checks if the birth month is ahead of the current month.
      *
      * @param month The month of the year to validate
-     * @param year The year value
+     * @param year  The year value
      */
     private static void validateMonth(final int month,
                                       final int year)
-                                      throws IllegalArgumentException
+        throws IllegalArgumentException
     {
         if (month < JANUARY_MONTH_NUM ||
             month > DECEMBER_MONTH_NUM)
@@ -95,24 +96,25 @@ public class Date
             throw new IllegalArgumentException("Month is out of range");
         }
         else if (year == CURRENT_YEAR &&
-                month > CURRENT_MONTH)
+                 month > CURRENT_MONTH)
         {
             throw new IllegalArgumentException("Month cannot be in the future");
         }
     }
+
     /**
      * Checks if the day is within the valid range for the specific month and
      * year. If the birth year and month are the same as the current year and
      * month, it also checks if the birth day is ahead of the current day.
      *
-     * @param day The day of the month to validate
+     * @param day   The day of the month to validate
      * @param month The month value
-     * @param year The year value
+     * @param year  The year value
      */
     private static void validateDay(final int day,
                                     final int month,
                                     final int year)
-                                    throws IllegalArgumentException
+        throws IllegalArgumentException
     {
         if (day < DAY_ONE)
         {
@@ -120,12 +122,12 @@ public class Date
         }
 
         if (month == JANUARY_MONTH_NUM ||
-                month == MARCH_MONTH_NUM ||
-                month == MAY_MONTH_NUM ||
-                month == JULY_MONTH_NUM ||
-                month == AUGUST_MONTH_NUM ||
-                month == OCTOBER_MONTH_NUM ||
-                month == DECEMBER_MONTH_NUM)
+            month == MARCH_MONTH_NUM ||
+            month == MAY_MONTH_NUM ||
+            month == JULY_MONTH_NUM ||
+            month == AUGUST_MONTH_NUM ||
+            month == OCTOBER_MONTH_NUM ||
+            month == DECEMBER_MONTH_NUM)
         {
             if (day > LONG_MONTH)
             {
@@ -133,9 +135,9 @@ public class Date
             }
         }
         else if (month == APRIL_MONTH_NUM ||
-                month == JUNE_MONTH_NUM ||
-                month == SEPTEMBER_MONTH_NUM ||
-                month == NOVEMBER_MONTH_NUM)
+                 month == JUNE_MONTH_NUM ||
+                 month == SEPTEMBER_MONTH_NUM ||
+                 month == NOVEMBER_MONTH_NUM)
         {
             if (day > SHORT_MONTH)
             {
@@ -145,7 +147,7 @@ public class Date
         else
         {
             if (year % YEAR_EVERY_LEAP_YEAR == DIVISIBLE &&
-                    year % YEAR_EVERY_CENTURY != DIVISIBLE)
+                year % YEAR_EVERY_CENTURY != DIVISIBLE)
             {
                 if (day > LONG_FEBRUARY_MONTH_TOTAL)
                 {
@@ -191,7 +193,7 @@ public class Date
      *
      * @return the date's month in String form
      */
-    public String getMonth()
+    public String getMonthString()
     {
         return switch (month)
         {
@@ -209,6 +211,16 @@ public class Date
             case DECEMBER_MONTH_NUM -> "December";
             default -> throw new IllegalStateException("An error occurred");
         };
+    }
+
+    /**
+     * Gets this Date's month as an int.
+     *
+     * @return this Date's month as an int
+     */
+    public int getMonthInt()
+    {
+        return month;
     }
 
     /**

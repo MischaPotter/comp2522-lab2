@@ -5,83 +5,39 @@ package ca.bcit.comp2522.fantasycreatures;
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- * 
+ *
  * @version 1.0
  */
 public class Creature
 {
     private final String name;
-    private final Date dateOfBirth;
-    private int health;
+    private final Date   dateOfBirth;
+    private       int    health;
 
-    private static final int MIN_HEALTH = 1;
-    private static final int MAX_HEALTH = 100;
-    private static final int BASE_VALUE = 0;
+    private static final int MIN_HEALTH        = 1;
+    private static final int MAX_HEALTH        = 100;
+    private static final int BASE_VALUE        = 0;
+    private static final int MIN_HEAL_AMOUNT   = 0;
+    private static final int MIN_DAMAGE_AMOUNT = 0;
 
     /**
      * Constructs a creature of a fantasy world.
      *
-     * @param name The name of the creature
+     * @param name        The name of the creature
      * @param dateOfBirth The date of birth of the creature
-     * @param health The amount of health the creature has
-     * @throws IllegalArgumentException if any parameter is invalid
+     * @param health      The amount of health the creature has
      */
     Creature(final String name,
-            final Date dateOfBirth,
-            final int health)
-            throws IllegalArgumentException
+             final Date dateOfBirth,
+             final int health)
     {
         validateName(name);
         validateDate(dateOfBirth);
         validateHealth(health);
 
-        this.name = name;
+        this.name        = name;
         this.dateOfBirth = dateOfBirth;
-        this.health = health;
-    }
-
-    /**
-     * Checks if the creature's name is null or blank or just whitespace.
-     *
-     * @param name The creature's name to validate
-     */
-    private static void validateName(final String name)
-            throws IllegalArgumentException
-    {
-        if(name == null ||
-            name.isBlank())
-        {
-            throw new IllegalArgumentException("Name cannot be null or empty");
-        }
-    }
-
-    /**
-     * Checks if the creature's date of birth is null.
-     *
-     * @param dateOfBirth The creature's date of birth to validate
-     */
-    private static void validateDate(final Date dateOfBirth)
-            throws IllegalArgumentException
-    {
-        if(dateOfBirth == null)
-        {
-            throw new IllegalArgumentException("The date cannot be null");
-        }
-    }
-
-    /**
-     * Checks if the creature's health is outside the range of 1-100.
-     *
-     * @param health The creature's health amount to validate
-     */
-    private static void validateHealth(final int health)
-            throws IllegalArgumentException
-    {
-        if(health < MIN_HEALTH ||
-            health > MAX_HEALTH)
-        {
-            throw new IllegalArgumentException("Health must be between 1 and 100");
-        }
+        this.health      = health;
     }
 
     /**
@@ -98,18 +54,16 @@ public class Creature
      * Reduces the creature's health by the given damage amount.
      *
      * @param damage the amount of damage the creature takes
-     * @throws DamageException if {@code damage} is less than 0
      */
     public void takeDamage(final int damage)
-            throws DamageException
     {
-        if(damage < BASE_VALUE)
+        if (damage < MIN_DAMAGE_AMOUNT)
         {
-            throw new DamageException("Damage cannot be negative");
+            throw new DamageException("Damage cannot be negative: " + damage);
         }
 
         health -= damage;
-        if(health < MIN_HEALTH)
+        if (health < MIN_HEALTH)
         {
             health = MIN_HEALTH;
         }
@@ -119,20 +73,60 @@ public class Creature
      * Heals the creature's health by the given healing amount.
      *
      * @param healAmount the amount of healing the creature takes
-     * @throws HealingException if {@code healAmount} is less than 0
      */
     public void heal(final int healAmount)
-            throws HealingException
+
     {
-        if(healAmount < BASE_VALUE)
+        if (healAmount < MIN_HEAL_AMOUNT)
         {
-            throw new HealingException("Healing amount cannot be negative");
+            throw new HealingException("Healing amount cannot be negative: " + healAmount);
         }
 
         health += healAmount;
-        if(health > MAX_HEALTH)
+        if (health > MAX_HEALTH)
         {
             health = MAX_HEALTH;
+        }
+    }
+
+    /**
+     * Checks if the creature's name is null or blank or just whitespace.
+     *
+     * @param name The creature's name to validate
+     */
+    private static void validateName(final String name)
+    {
+        if (name == null ||
+            name.isBlank())
+        {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+    }
+
+    /**
+     * Checks if the creature's date of birth is null.
+     *
+     * @param dateOfBirth The creature's date of birth to validate
+     */
+    private static void validateDate(final Date dateOfBirth)
+    {
+        if (dateOfBirth == null)
+        {
+            throw new IllegalArgumentException("The date cannot be null");
+        }
+    }
+
+    /**
+     * Checks if the creature's health is outside the range of 1-100.
+     *
+     * @param health The creature's health amount to validate
+     */
+    private static void validateHealth(final int health)
+    {
+        if (health < MIN_HEALTH ||
+            health > MAX_HEALTH)
+        {
+            throw new IllegalArgumentException("Health must be between 1 and 100: " + health);
         }
     }
 
@@ -143,10 +137,10 @@ public class Creature
      */
     public int getAgeYears()
     {
-        final int tempYear = dateOfBirth.year;
+        final int tempYear = dateOfBirth.getYear();
         final int tempMonth = dateOfBirth.month;
         final int tempDay;
-        
+
         if (dateOfBirth.month == Date.getFebruaryMonthNum() &&
             dateOfBirth.day == Date.getLongFebMonthTotal())
         {
@@ -154,7 +148,7 @@ public class Creature
         }
         else
         {
-            tempDay = dateOfBirth.day;
+            tempDay = dateOfBirth.getDay();
         }
 
         if (Date.getCurrentYear() == tempYear)
@@ -167,7 +161,7 @@ public class Creature
 
         if (Date.getCurrentMonth() < tempMonth ||
             (Date.getCurrentMonth() == tempMonth &&
-            Date.getCurrentDay() < tempDay))
+             Date.getCurrentDay() < tempDay))
         {
             ageInYears--;
         }
@@ -176,23 +170,76 @@ public class Creature
     }
 
     /**
+     * Gets this Creature's name.
+     *
+     * @return this Creature's name
+     */
+    protected String getName()
+    {
+        return name;
+    }
+
+    /**
+     * Gets this Creature's birth month.
+     *
+     * @return the birth month of this Creature
+     */
+    protected String getBirthMonth()
+    {
+        return dateOfBirth.getMonthString();
+    }
+
+    /**
+     * Gets this Creature's birth day.
+     *
+     * @return the birth day of this Creature
+     */
+    protected int getBirthDay()
+    {
+        return dateOfBirth.getDay();
+    }
+
+    /**
+     * Gets this Creature's birth year.
+     *
+     * @return the birth year of this Creature
+     */
+    protected int getBirthYear()
+    {
+        return dateOfBirth.getYear();
+    }
+
+    /**
+     * Gets this Creature's health.
+     *
+     * @return the health of this Creature
+     */
+    protected int getHealth()
+    {
+        return health;
+    }
+
+    /**
      * Prints the details of the creature, such as:
      * name, date of birth, age, and health.
      */
     public void getDetails()
     {
-        System.out.println("\nCreature:\nName : " +
-                name +
-                "\nDOB: " +
-                dateOfBirth.getMonth() +
-                " " +
-                dateOfBirth.getDay() +
-                ", " +
-                dateOfBirth.getYear() +
-                "\nAge: "
-                + getAgeYears() +
-                " year(s) old" +
-                "\nHealth: " +
-                health);
+        final StringBuilder builder;
+        builder = new StringBuilder();
+        builder.append("\nCreature:\nName : ");
+        builder.append(name);
+        builder.append("\nDOB: ");
+        builder.append(dateOfBirth.getMonthString());
+        builder.append(" ");
+        builder.append(dateOfBirth.getDay());
+        builder.append(", ");
+        builder.append(dateOfBirth.getYear());
+        builder.append("\nAge: ");
+        builder.append(getAgeYears());
+        builder.append(" year(s) old\nHealth: ");
+        builder.append(health);
+
+        System.out.println(builder.toString());
     }
 }
