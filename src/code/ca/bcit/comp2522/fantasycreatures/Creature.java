@@ -41,6 +41,47 @@ public class Creature
     }
 
     /**
+     * Checks if the creature's name is null or blank or just whitespace.
+     *
+     * @param name The creature's name to validate
+     */
+    private static void validateName(final String name)
+    {
+        if (name == null ||
+            name.isBlank())
+        {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+    }
+
+    /**
+     * Checks if the creature's date of birth is null.
+     *
+     * @param dateOfBirth The creature's date of birth to validate
+     */
+    private static void validateDate(final Date dateOfBirth)
+    {
+        if (dateOfBirth == null)
+        {
+            throw new IllegalArgumentException("The date cannot be null");
+        }
+    }
+
+    /**
+     * Checks if the creature's health is outside the range of 1-100.
+     *
+     * @param health The creature's health amount to validate
+     */
+    private static void validateHealth(final int health)
+    {
+        if (health < MIN_HEALTH ||
+            health > MAX_HEALTH)
+        {
+            throw new IllegalArgumentException("Health must be between 1 and 100: " + health);
+        }
+    }
+
+    /**
      * Returns whether the creature is alive or not.
      *
      * @return whether the creature is alive or not
@@ -86,47 +127,6 @@ public class Creature
         if (health > MAX_HEALTH)
         {
             health = MAX_HEALTH;
-        }
-    }
-
-    /**
-     * Checks if the creature's name is null or blank or just whitespace.
-     *
-     * @param name The creature's name to validate
-     */
-    private static void validateName(final String name)
-    {
-        if (name == null ||
-            name.isBlank())
-        {
-            throw new IllegalArgumentException("Name cannot be null or empty");
-        }
-    }
-
-    /**
-     * Checks if the creature's date of birth is null.
-     *
-     * @param dateOfBirth The creature's date of birth to validate
-     */
-    private static void validateDate(final Date dateOfBirth)
-    {
-        if (dateOfBirth == null)
-        {
-            throw new IllegalArgumentException("The date cannot be null");
-        }
-    }
-
-    /**
-     * Checks if the creature's health is outside the range of 1-100.
-     *
-     * @param health The creature's health amount to validate
-     */
-    private static void validateHealth(final int health)
-    {
-        if (health < MIN_HEALTH ||
-            health > MAX_HEALTH)
-        {
-            throw new IllegalArgumentException("Health must be between 1 and 100: " + health);
         }
     }
 
