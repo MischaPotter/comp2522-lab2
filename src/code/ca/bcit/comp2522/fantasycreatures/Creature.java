@@ -116,7 +116,6 @@ public class Creature
      * @param healAmount the amount of healing the creature takes
      */
     public void heal(final int healAmount)
-
     {
         if (healAmount < MIN_HEAL_AMOUNT)
         {
