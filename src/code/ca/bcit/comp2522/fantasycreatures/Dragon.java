@@ -116,7 +116,7 @@ public class Dragon extends Creature
     {
         if ((firePower + amount) > MAX_FIREPOWER)
         {
-            throw new IllegalArgumentException("Total amount added to firePower cannot exceed it past 100: " + amount);
+            throw new IllegalArgumentException("Total amount added to firePower cannot exceed 100: " + amount);
         }
 
         firePower += amount;

@@ -18,8 +18,7 @@ public class Orc extends Creature
     private static final int RAGE_GAINED       = 5;
     private static final int MIN_RAGE_REQUIRED = 5;
     private static final int RAGE_FOR_DOUBLE   = 20;
-    private static final int NO_DAMAGE_DEALT   = 0;
-    
+
     private int rage;
 
     /**
@@ -49,8 +48,7 @@ public class Orc extends Creature
      */
     private static void validateRage(final int rage)
     {
-        if (rage < MIN_RAGE ||
-            rage > MAX_RAGE)
+        if (rage < MIN_RAGE || rage > MAX_RAGE)
         {
             throw new IllegalArgumentException("Invalid rage: " + rage);
         }

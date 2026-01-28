@@ -5,7 +5,7 @@ package ca.bcit.comp2522.fantasycreatures;
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- * 
+ *
  * @version 1.0
  */
 
@@ -13,11 +13,11 @@ public class Elf extends Creature
 {
     private static final int MAX_MANA          = 50;
     private static final int MIN_MANA          = 0;
-    private static final int MANA_DEALT        = 10;
+    private static final int DAMAGE_DEALT      = 10;
     private static final int MANA_LOST         = 5;
     private static final int MIN_MANA_REQUIRED = 5;
     private static final int NO_DAMAGE_DEALT   = 0;
-    
+
     private int mana;
 
     /**
@@ -97,7 +97,7 @@ public class Elf extends Creature
                 throw new LowManaException("Not enough mana to cast a spell: " + mana);
             }
             mana -= MANA_LOST;
-            return MANA_DEALT;
+            return DAMAGE_DEALT;
         }
         catch (LowManaException e)
         {
