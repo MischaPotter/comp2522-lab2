@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.fantasycreatures;
 
 /**
- * This class models the creatures of a fantasy world.
+ * Models the creatures of a fantasy world.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D

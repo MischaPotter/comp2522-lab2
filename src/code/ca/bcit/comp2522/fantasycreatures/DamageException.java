@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.fantasycreatures;
 
 /**
- * This class models an unchecked exception that is thrown to
+ * Models an unchecked exception that is thrown to
  * indicate that an invalid damage amount was provided.
  *
  * @author Mischa Potter Set D

@@ -1,9 +1,8 @@
 package ca.bcit.comp2522.fantasycreatures;
 
 /**
- * This is the test class which will be used to instantiate new
- * creatures and have them fight against each other with their
- * special abilities.
+ * Instantiates new creatures and makes them fight against
+ * each other with their special abilities.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D

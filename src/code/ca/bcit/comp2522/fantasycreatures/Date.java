@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.fantasycreatures;
 
 /**
- * This class models the birth date of a fantasy creature.
+ * Models the birth date of a fantasy creature.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
