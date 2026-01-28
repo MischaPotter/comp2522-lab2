@@ -48,7 +48,8 @@ public class Orc extends Creature
      */
     private static void validateRage(final int rage)
     {
-        if (rage < MIN_RAGE || rage > MAX_RAGE)
+        if (rage < MIN_RAGE ||
+            rage > MAX_RAGE)
         {
             throw new IllegalArgumentException("Invalid rage: " + rage);
         }

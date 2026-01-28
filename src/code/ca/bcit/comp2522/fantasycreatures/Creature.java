@@ -140,8 +140,8 @@ public class Creature
         final int tempMonth = dateOfBirth.getMonthInt();
         final int tempDay;
 
-        if (dateOfBirth.month == Date.getFebruaryMonthNum() &&
-            dateOfBirth.day == Date.getLongFebMonthTotal())
+        if (dateOfBirth.getMonthInt() == Date.getFebruaryMonthNum() &&
+            dateOfBirth.getDay() == Date.getLongFebMonthTotal())
         {
             tempDay = Date.getShortFebMonthTotal();
         }
