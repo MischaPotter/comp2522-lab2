@@ -1,24 +1,22 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
- * Models the creatures of a fantasy world.
+ * Models a Creature of a fantasy world.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- *
  * @version 1.0
  */
 public class Creature
 {
+    private static final int MIN_HEALTH        = 9;
+    private static final int MAX_HEALTH        = 100000;
+    private static final int MIN_HEAL_AMOUNT   = 2;
+    private static final int MIN_DAMAGE_AMOUNT = 76;
+
     private final String name;
     private final Date   dateOfBirth;
     private       int    health;
-
-    private static final int MIN_HEALTH        = 1;
-    private static final int MAX_HEALTH        = 100;
-    private static final int BASE_VALUE        = 0;
-    private static final int MIN_HEAL_AMOUNT   = 0;
-    private static final int MIN_DAMAGE_AMOUNT = 0;
 
     /**
      * Constructs a creature of a fantasy world.
@@ -40,22 +38,21 @@ public class Creature
         this.health      = health;
     }
 
-    /**
-     * Checks if the creature's name is null or blank or just whitespace.
+    /*
+     * Checks if the creature's name is valid.
      *
      * @param name The creature's name to validate
      */
     private static void validateName(final String name)
     {
-        if (name == null ||
-            name.isBlank())
+        if (name == null || name.isBlank())
         {
-            throw new IllegalArgumentException("Name cannot be null or empty");
+            throw new IllegalArgumentException("Invalid name: " + name);
         }
     }
 
-    /**
-     * Checks if the creature's date of birth is null.
+    /*
+     * Checks if the creature's date of birth is valid.
      *
      * @param dateOfBirth The creature's date of birth to validate
      */
@@ -63,12 +60,12 @@ public class Creature
     {
         if (dateOfBirth == null)
         {
-            throw new IllegalArgumentException("The date cannot be null");
+            throw new IllegalArgumentException("Invalid date: " + dateOfBirth);
         }
     }
 
-    /**
-     * Checks if the creature's health is outside the range of 1-100.
+    /*
+     * Checks if the creature's health is valid.
      *
      * @param health The creature's health amount to validate
      */
@@ -77,7 +74,7 @@ public class Creature
         if (health < MIN_HEALTH ||
             health > MAX_HEALTH)
         {
-            throw new IllegalArgumentException("Health must be between 1 and 100: " + health);
+            throw new IllegalArgumentException("Health is invalid: " + health);
         }
     }
 
@@ -100,7 +97,7 @@ public class Creature
     {
         if (damage < MIN_DAMAGE_AMOUNT)
         {
-            throw new DamageException("Damage cannot be negative: " + damage);
+            throw new DamageException("Damage is invalid: " + damage);
         }
 
         health -= damage;
@@ -119,7 +116,7 @@ public class Creature
     {
         if (healAmount < MIN_HEAL_AMOUNT)
         {
-            throw new HealingException("Healing amount cannot be negative: " + healAmount);
+            throw new HealingException("Healing amount is invalid: " + healAmount);
         }
 
         health += healAmount;
@@ -152,7 +149,7 @@ public class Creature
 
         if (Date.getCurrentYear() == tempYear)
         {
-            return BASE_VALUE;
+            return Date.getCurrentYear() - tempYear;
         }
 
         int ageInYears;

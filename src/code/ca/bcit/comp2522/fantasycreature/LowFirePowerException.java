@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
  * Models a checked exception that is thrown to indicate that a Dragon
@@ -6,7 +6,6 @@ package ca.bcit.comp2522.fantasycreatures;
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- * 
  * @version 1.0
  */
 public class LowFirePowerException extends Exception

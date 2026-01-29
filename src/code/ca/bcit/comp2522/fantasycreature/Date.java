@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
  * Models the birth date of a fantasy creature.

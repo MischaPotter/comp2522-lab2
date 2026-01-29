@@ -1,11 +1,10 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
  * Models a Dragon that can breathe fire.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- *
  * @version 1.0
  */
 
@@ -40,7 +39,7 @@ public class Dragon extends Creature
         this.firePower = firePower;
     }
 
-    /**
+    /*
      * Validates the firepower.
      *
      * @param firePower the firepower to be validated
@@ -94,12 +93,12 @@ public class Dragon extends Creature
         {
             if (firePower < MIN_FIREPOWER_REQUIRED)
             {
-                throw new LowFirePowerException("Not enough firepower to breathe fire: " + firePower);
+                throw new LowFirePowerException(MIN_FIREPOWER_REQUIRED + " to breathe fire");
             }
             firePower -= FIREPOWER_LOST;
             return FIREPOWER_DEALT;
         }
-        catch (LowFirePowerException e)
+        catch (final LowFirePowerException e)
         {
             System.out.println(e.getMessage());
             return NO_DAMAGE_DEALT;
@@ -116,7 +115,7 @@ public class Dragon extends Creature
     {
         if ((firePower + amount) > MAX_FIREPOWER)
         {
-            throw new IllegalArgumentException("Total amount added to firePower cannot exceed 100: " + amount);
+            throw new IllegalArgumentException("Amount is invalid: " + amount);
         }
 
         firePower += amount;

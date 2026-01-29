@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
  * Instantiates new creatures and makes them fight against
@@ -6,7 +6,6 @@ package ca.bcit.comp2522.fantasycreatures;
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- *
  * @version 1.0
  */
 public class CreatureTest

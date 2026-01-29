@@ -1,11 +1,10 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
  * Models an Elf that can cast spells.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- *
  * @version 1.0
  */
 
@@ -40,15 +39,14 @@ public class Elf extends Creature
         this.mana = mana;
     }
 
-    /**
+    /*
      * Validates the mana.
      *
      * @param mana the mana to be validated
      */
     private static void validateMana(final int mana)
     {
-        if (mana < MIN_MANA ||
-            mana > MAX_MANA)
+        if (mana < MIN_MANA || mana > MAX_MANA)
         {
             throw new IllegalArgumentException("Invalid mana: " + mana);
         }

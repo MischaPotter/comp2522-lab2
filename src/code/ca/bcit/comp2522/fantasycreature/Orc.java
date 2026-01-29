@@ -1,11 +1,10 @@
-package ca.bcit.comp2522.fantasycreatures;
+package ca.bcit.comp2522.fantasycreature;
 
 /**
  * Models an Orc that can go berserk.
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- *
  * @version 1.0
  */
 
@@ -48,8 +47,7 @@ public class Orc extends Creature
      */
     private static void validateRage(final int rage)
     {
-        if (rage < MIN_RAGE ||
-            rage > MAX_RAGE)
+        if (rage < MIN_RAGE || rage > MAX_RAGE)
         {
             throw new IllegalArgumentException("Invalid rage: " + rage);
         }
@@ -93,7 +91,7 @@ public class Orc extends Creature
     {
         if (rage < MIN_RAGE_REQUIRED)
         {
-            throw new LowRageException("Rage amount cannot be less than 5: " + rage);
+            throw new LowRageException("Not enough rage: " + rage);
         }
 
         rage += RAGE_GAINED;
