@@ -5,7 +5,6 @@ package ca.bcit.comp2522.fantasycreatures;
  *
  * @author Mischa Potter Set D
  * @author Abdullah Munawar Set D
- *
  * @version 1.0
  */
 public class Date
@@ -37,9 +36,9 @@ public class Date
     private static final int YEAR_EVERY_FOUR_CENTURY    = 400;
     private static final int DIVISIBLE                  = 0;
 
-    public final int year;
-    public final int month;
-    public final int day;
+    private final int year;
+    private final int month;
+    private final int day;
 
     /**
      * Constructs the birth date of a fantasy creature.
